@@ -1,0 +1,195 @@
+/* --------------------
+   Global Styles
+-------------------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+/* --------------------
+   Navbar
+-------------------- */
+
+/* Navbar */
+
+.navbar{
+    background: rgba(12, 87, 38, 0.98) !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.navbar-brand{
+    color:#FFD54F !important;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-link{
+    color:#ffffff !important;
+    font-size:18px;
+    font-weight:600;
+    margin-left:20px;
+    padding:8px 15px !important;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.nav-link:hover{
+    background:#FFD54F;
+    color:#0c5726 !important;
+}
+
+.nav-link.active{
+    background:#ffffff;
+    color:#0c5726 !important;
+    font-weight:bold;
+}
+
+/* --------------------
+   Home Page
+-------------------- */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    background:rgba(0,0,0,0.45);
+    padding:30px;
+}
+
+.hero h1{
+    font-size:52px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    width:75%;
+    margin-bottom:30px;
+}
+
+/* --------------------
+   About Page
+-------------------- */
+
+.box{
+    width:80%;
+    margin:50px auto;
+    background:rgba(255,255,255,0.90);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+/* --------------------
+   Prediction Form
+-------------------- */
+
+.container-box{
+
+    width:60%;
+    margin:40px auto;
+    background:rgba(255,255,255,.92);
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+
+}
+
+.container-box h2{
+
+    color:#198754;
+    text-align:center;
+    margin-bottom:25px;
+
+}
+
+.form-control{
+
+    border-radius:10px;
+
+}
+
+.form-control:focus{
+
+    border-color:#198754;
+    box-shadow:0 0 8px rgba(25,135,84,.4);
+
+}
+
+.btn-success{
+
+    padding:12px;
+    font-size:18px;
+    border-radius:10px;
+
+}
+
+.alert{
+
+    font-size:22px;
+    font-weight:bold;
+    border-radius:12px;
+
+}
+
+/* --------------------
+   Footer (Optional)
+-------------------- */
+
+footer{
+
+    background:#198754;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+
+}
+
+/* --------------------
+   Responsive
+-------------------- */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:34px;
+
+}
+
+.hero p{
+
+font-size:18px;
+width:95%;
+
+}
+
+.container-box{
+
+width:95%;
+
+}
+
+.box{
+
+width:95%;
+
+}
+
+}
