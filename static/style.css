@@ -1,195 +1,449 @@
-/* --------------------
-   Global Styles
--------------------- */
+/* ===========================
+   GLOBAL
+=========================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+background:#f5f8f5;
+color:#333;
 }
 
-/* --------------------
-   Navbar
--------------------- */
-
-/* Navbar */
+/* ===========================
+   NAVBAR
+=========================== */
 
 .navbar{
-    background: rgba(12, 87, 38, 0.98) !important;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+background:white !important;
+padding:18px 0;
+box-shadow:0 3px 15px rgba(0,0,0,.1);
 }
 
-.navbar-brand{
-    color:#FFD54F !important;
-    font-size:28px;
-    font-weight:bold;
+.logo-title{
+font-size:34px;
+font-weight:700;
+color:#146c2e;
+margin:0;
+}
+
+.logo-subtitle{
+font-size:14px;
+color:#555;
 }
 
 .nav-link{
-    color:#ffffff !important;
-    font-size:18px;
-    font-weight:600;
-    margin-left:20px;
-    padding:8px 15px !important;
-    border-radius:8px;
-    transition:0.3s;
+font-size:18px;
+font-weight:600;
+margin-left:18px;
+color:#222 !important;
+padding:10px 18px !important;
+border-radius:12px;
+transition:.3s;
 }
 
 .nav-link:hover{
-    background:#FFD54F;
-    color:#0c5726 !important;
+background:#198754;
+color:white !important;
 }
 
 .nav-link.active{
-    background:#ffffff;
-    color:#0c5726 !important;
-    font-weight:bold;
+background:#198754;
+color:white !important;
 }
 
-/* --------------------
-   Home Page
--------------------- */
+/* ===========================
+   HERO
+=========================== */
 
-.hero{
-    min-height:90vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    background:rgba(0,0,0,0.45);
-    padding:30px;
-}
+.about-hero{
 
-.hero h1{
-    font-size:52px;
-    font-weight:bold;
-    margin-bottom:20px;
-}
+height:470px;
 
-.hero p{
-    font-size:22px;
-    width:75%;
-    margin-bottom:30px;
-}
+background:url("/static/images/about.jpg");
 
-/* --------------------
-   About Page
--------------------- */
+background-size:cover;
 
-.box{
-    width:80%;
-    margin:50px auto;
-    background:rgba(255,255,255,0.90);
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,.3);
-}
+background-position:center;
 
-/* --------------------
-   Prediction Form
--------------------- */
-
-.container-box{
-
-    width:60%;
-    margin:40px auto;
-    background:rgba(255,255,255,.92);
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,.3);
+position:relative;
 
 }
 
-.container-box h2{
+.overlay{
 
-    color:#198754;
-    text-align:center;
-    margin-bottom:25px;
+background:rgba(0,0,0,.55);
 
-}
+width:100%;
 
-.form-control{
+height:100%;
 
-    border-radius:10px;
+display:flex;
 
-}
+align-items:center;
 
-.form-control:focus{
-
-    border-color:#198754;
-    box-shadow:0 0 8px rgba(25,135,84,.4);
+justify-content:center;
 
 }
 
-.btn-success{
+.hero-badge{
 
-    padding:12px;
-    font-size:18px;
-    border-radius:10px;
+display:inline-block;
 
-}
+padding:10px 24px;
 
-.alert{
+border:2px solid #6dd46d;
 
-    font-size:22px;
-    font-weight:bold;
-    border-radius:12px;
+border-radius:40px;
 
-}
+color:#dfffd8;
 
-/* --------------------
-   Footer (Optional)
--------------------- */
+font-weight:600;
 
-footer{
-
-    background:#198754;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:30px;
+margin-bottom:20px;
 
 }
 
-/* --------------------
-   Responsive
--------------------- */
+.about-hero h1{
 
-@media(max-width:768px){
+font-size:60px;
 
-.hero h1{
+font-weight:bold;
+
+color:white;
+
+}
+
+.green-text{
+
+color:#76e86d;
+
+}
+
+.hero-text{
+
+max-width:850px;
+
+margin:auto;
+
+font-size:24px;
+
+color:white;
+
+margin-top:25px;
+
+line-height:1.7;
+
+}
+
+/* ===========================
+   FEATURE CARDS
+=========================== */
+
+.feature-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+transition:.4s;
+
+height:100%;
+
+}
+
+.feature-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.icon-circle{
+
+width:90px;
+
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:#eaf8ea;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:40px;
+
+margin-bottom:20px;
+
+}
+
+.feature-card h3{
+
+color:#146c2e;
+
+font-weight:bold;
+
+margin-bottom:15px;
+
+}
+
+.feature-card p{
+
+font-size:16px;
+
+line-height:1.8;
+
+color:#555;
+
+}
+
+/* ===========================
+   PARAMETER SECTION
+=========================== */
+
+.parameter-box{
+
+background:white;
+
+padding:35px;
+
+border-radius:18px;
+
+margin-top:40px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+}
+
+.parameter-title{
 
 font-size:34px;
 
+font-weight:bold;
+
+color:#146c2e;
+
+margin-bottom:30px;
+
 }
 
-.hero p{
+.parameter{
+
+text-align:center;
+
+padding:15px;
+
+}
+
+.parameter i{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+display:block;
+
+}
+
+.parameter h5{
+
+font-weight:bold;
+
+}
+
+.parameter p{
+
+color:#666;
+
+}
+
+/* ===========================
+   TECHNOLOGY CARD
+=========================== */
+
+.tech-box{
+
+background:white;
+
+padding:35px;
+
+border-radius:18px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.12);
+
+margin-top:40px;
+
+}
+
+.tech-box h3{
+
+color:#146c2e;
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+.tech-box p{
 
 font-size:18px;
-width:95%;
+
+line-height:1.8;
 
 }
 
-.container-box{
+/* ===========================
+   FOOTER
+=========================== */
 
-width:95%;
+footer{
+
+margin-top:60px;
+
+background:#0d4e1d;
+
+color:white;
+
+padding:35px;
 
 }
 
-.box{
+footer h4{
 
-width:95%;
+margin-bottom:15px;
+
+font-weight:bold;
 
 }
 
+footer p{
+
+margin:0;
+
+font-size:17px;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+.about-hero{
+
+height:auto;
+
+padding:80px 20px;
+
+}
+
+.about-hero h1{
+
+font-size:40px;
+
+}
+
+.hero-text{
+
+font-size:18px;
+
+}
+
+.logo-title{
+
+font-size:28px;
+
+}
+
+.nav-link{
+
+margin-top:10px;
+
+}
+
+}
+/* =====================================
+   FIND YOUR CROP PAGE
+===================================== */
+
+.crop-page{
+    background: url("/static/images/crop.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+.crop-page::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: -1;
+}
+
+.crop-hero{
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+}
+
+.crop-hero h1{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.crop-hero p{
+    font-size: 20px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.card{
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-control{
+    border-radius: 10px;
+}
+
+.btn-success{
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.alert-success{
+    border-radius: 12px;
+}
+
+.table th{
+    background: #198754;
+    color: white;
+}
+
+.table td{
+    background: white;
+}
+
+.navbar-brand img{
+    border-radius: 50%;
 }

@@ -1,96 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your Crop - OptiCrop</title>
 
-    <!-- Bootstrap -->
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Your Crop | OptiCrop</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
-<body style="background-image:url('{{ url_for('static', filename='images/crop.jpg') }}');">
+<body class="crop-page">
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark">
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="/">🌱 OptiCrop</a>
+        <a class="navbar-brand d-flex align-items-center" href="/">
 
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/about">About</a>
-            <a class="nav-link active" href="/findyourcrop">Find Your Crop</a>
-        </div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}"
+                width="60"
+                height="60"
+                class="me-2">
 
-    </div>
-</nav>
+            <div>
 
-<!-- Prediction Form -->
+                <h3 class="m-0 text-success fw-bold">
+                    OptiCrop
+                </h3>
 
-<div class="container-box">
+                <small class="text-muted">
+                    Smart Crop Recommendation
+                </small>
 
-    <h2>🌾 Crop Recommendation System</h2>
+            </div>
 
-    <form action="{{ url_for('predict') }}" method="POST">
+        </a>
 
-        <div class="mb-3">
-            <label class="form-label">Nitrogen (N)</label>
-            <input type="number" class="form-control" name="nitrogen" required>
-        </div>
+        <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
 
-        <div class="mb-3">
-            <label class="form-label">Phosphorous (P)</label>
-            <input type="number" class="form-control" name="phosphorous" required>
-        </div>
+            <span class="navbar-toggler-icon"></span>
 
-        <div class="mb-3">
-            <label class="form-label">Potassium (K)</label>
-            <input type="number" class="form-control" name="potassium" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Temperature (°C)</label>
-            <input type="number" step="0.01" class="form-control" name="temperature" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Humidity (%)</label>
-            <input type="number" step="0.01" class="form-control" name="humidity" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">pH Value</label>
-            <input type="number" step="0.01" class="form-control" name="ph" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Rainfall (mm)</label>
-            <input type="number" step="0.01" class="form-control" name="rainfall" required>
-        </div>
-
-        <button type="submit" class="btn btn-success w-100">
-            🌱 Predict Best Crop
         </button>
 
-    </form>
+        <div class="collapse navbar-collapse"
+            id="navbarNav">
 
-    {% if prediction_text %}
-    <div class="alert alert-success mt-4 text-center">
-        <h4>{{ prediction_text }}</h4>
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                        href="/">
+                        Home
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                        href="/about">
+                        About
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                        href="/findyourcrop">
+
+                        🌱 Find Your Crop
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
     </div>
-    {% endif %}
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="crop-hero">
+
+    <div class="container text-center">
+
+        <h1>
+
+            🌱 Find Your Best Crop
+
+        </h1>
+
+        <p>
+
+            Enter soil nutrients and environmental conditions to receive an accurate Machine Learning based crop recommendation.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container mb-5">
+
+<div class="row g-4">
+
+<!-- LEFT CARD -->
+
+<div class="col-lg-6">
+
+<div class="card shadow-lg border-0 rounded-4 p-4">
+
+<h2 class="text-success mb-4">
+
+<i class="bi bi-tree-fill"></i>
+
+Enter Soil & Environmental Parameters
+
+</h2>
+
+<form action="{{ url_for('predict') }}" method="POST">
+
+<!-- Nitrogen -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Nitrogen (N)
+
+<small class="text-muted">
+
+Range: 0 - 140
+
+</small>
+
+</label>
+
+<input
+type="number"
+class="form-control"
+name="nitrogen"
+placeholder="Example : 90"
+value="{{ nitrogen if nitrogen else '' }}"
+required>
 
 </div>
 
-<!-- Footer -->
-<footer class="text-center text-white mt-5 p-3" style="background:rgba(25,135,84,0.9);">
-    © 2026 OptiCrop | Smart Agricultural Production Optimization Engine
+<!-- Phosphorous -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Phosphorous (P)
+
+<small class="text-muted">
+
+Range: 5 - 145
+
+</small>
+
+</label>
+
+<input
+type="number"
+class="form-control"
+name="phosphorous"
+placeholder="Example : 42"
+value="{{ phosphorous if phosphorous else '' }}"
+required>
+
+</div>
+
+<!-- Potassium -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Potassium (K)
+
+<small class="text-muted">
+
+Range: 5 - 205
+
+</small>
+
+</label>
+
+<input
+type="number"
+class="form-control"
+name="potassium"
+placeholder="Example : 43"
+value="{{ potassium if potassium else '' }}"
+required>
+
+</div>
+<!-- Temperature -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Temperature (°C)
+
+<small class="text-muted">
+
+Range: 8 - 45
+
+</small>
+
+</label>
+
+<input
+type="number"
+step="0.01"
+class="form-control"
+name="temperature"
+placeholder="Example : 25.5"
+value="{{ temperature if temperature else '' }}"
+required>
+
+</div>
+
+<!-- Humidity -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Humidity (%)
+
+<small class="text-muted">
+
+Range: 14 - 100
+
+</small>
+
+</label>
+
+<input
+type="number"
+step="0.01"
+class="form-control"
+name="humidity"
+placeholder="Example : 82"
+value="{{ humidity if humidity else '' }}"
+required>
+
+</div>
+
+<!-- pH -->
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Soil pH
+
+<small class="text-muted">
+
+Range: 3.5 - 9.9
+
+</small>
+
+</label>
+
+<input
+type="number"
+step="0.01"
+class="form-control"
+name="ph"
+placeholder="Example : 6.5"
+value="{{ ph if ph else '' }}"
+required>
+
+</div>
+
+<!-- Rainfall -->
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Rainfall (mm)
+
+<small class="text-muted">
+
+Range: 20 - 300
+
+</small>
+
+</label>
+
+<input
+type="number"
+step="0.01"
+class="form-control"
+name="rainfall"
+placeholder="Example : 202"
+value="{{ rainfall if rainfall else '' }}"
+required>
+
+</div>
+
+<div class="d-grid">
+
+<button
+type="submit"
+class="btn btn-success btn-lg">
+
+<i class="bi bi-search"></i>
+
+Predict Crop
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- RIGHT CARD -->
+
+<div class="col-lg-6">
+
+<div class="card shadow-lg border-0 rounded-4 p-4">
+
+<h2 class="text-success mb-4">
+
+<i class="bi bi-flower1"></i>
+
+Recommended Crop
+
+</h2>
+
+{% if prediction_text %}
+
+<div class="alert alert-success text-center">
+
+<h3 class="fw-bold">
+
+🌾 {{ prediction_text }}
+
+</h3>
+
+</div>
+
+<hr>
+
+<h5 class="mb-3">
+
+Entered Values
+
+</h5>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Nitrogen</th>
+
+<td>{{ nitrogen }}</td>
+
+</tr>
+
+<tr>
+
+<th>Phosphorous</th>
+
+<td>{{ phosphorous }}</td>
+
+</tr>
+
+<tr>
+
+<th>Potassium</th>
+
+<td>{{ potassium }}</td>
+
+</tr>
+
+<tr>
+
+<th>Temperature</th>
+
+<td>{{ temperature }} °C</td>
+
+</tr>
+
+<tr>
+
+<th>Humidity</th>
+
+<td>{{ humidity }} %</td>
+
+</tr>
+
+<tr>
+
+<th>pH</th>
+
+<td>{{ ph }}</td>
+
+</tr>
+
+<tr>
+
+<th>Rainfall</th>
+
+<td>{{ rainfall }} mm</td>
+
+</tr>
+
+</table>
+
+{% else %}
+
+<div class="text-center py-5">
+
+<i class="bi bi-seedling text-success"
+style="font-size:70px;"></i>
+
+<h3 class="mt-3">
+
+Prediction will appear here
+
+</h3>
+
+<p class="text-muted">
+
+Fill all parameters and click
+<strong>Predict Crop</strong>
+
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-success text-white mt-5 py-4">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h4>🌱 OptiCrop</h4>
+
+                <p>
+                    Smart Agricultural Production Optimization Engine powered by
+                    Machine Learning. OptiCrop helps farmers make better crop
+                    selection decisions based on soil nutrients and environmental
+                    conditions.
+                </p>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h5>Quick Links</h5>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="/" class="text-white text-decoration-none">Home</a></li>
+
+                    <li><a href="/about" class="text-white text-decoration-none">About</a></li>
+
+                    <li><a href="/findyourcrop" class="text-white text-decoration-none">Find Your Crop</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h5>Project</h5>
+
+                <p>
+
+                    <strong>Model:</strong> Machine Learning<br>
+
+                    <strong>Framework:</strong> Flask<br>
+
+                    <strong>Language:</strong> Python
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr class="border-light">
+
+        <p class="text-center mb-0">
+
+            © 2026 OptiCrop 
+
+        </p>
+
+    </div>
+
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
